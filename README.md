@@ -1,12 +1,9 @@
 # Exploring and Lifting the Robustness of LLM-powered Automated Program Repair with Metamorphic Testing
 
 ## Datasets:
-We provide cleaned datasets for the following five programming languages:
-* Java
-* Python
-* C#
-* C++
-* JavaScript
+Two datasets are employed as our test subjects:
+* Defects4J
+* QuixBugs
 
 The datasets are located in the `datasets` directory, with each language's dataset stored in its respective subdirectory.
 

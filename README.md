@@ -5,8 +5,6 @@ Two datasets are employed as our test subjects:
 * Defects4J
 * QuixBugs
 
-The datasets are located in the `datasets` directory, with each language's dataset stored in its respective subdirectory.
-
 ## Code:
 This repository includes the following code:
 

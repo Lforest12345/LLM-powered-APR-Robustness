@@ -11,6 +11,7 @@ This repository includes the following code:
 * Code for using AST to implement nine kinds of MRs: Located in the `` directory.
 * Code for LLM-based code patch generation: Located in the `` directory, comprising code for LLaMA3-8B, LLaMA3-70B, Mistral Large, and CodeGemma-7B models. For GPT-3.5 and Gemini.
 * Construction of test cases: Located in the `` directory.
+* Code for training a CodeT5-based code editing model aiming at improving code readability: Located in the `` directory, which involves CodeT5-base⋆ and CodeT5-large⋆.
 
 ## Quick Start
 

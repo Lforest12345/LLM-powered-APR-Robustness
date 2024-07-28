@@ -15,13 +15,10 @@ This repository includes the following code:
 
 ## Quick Start
 
-### Datasets
-The datasets have been preprocessed and can be directly used for model training and testing.
+### Implemention of Nine MRs Based on AST.
+Navigate to the `` directory and execute the following code to implemnt MRs:
 
-### Reproducing the Bi-LSTM Model
-Navigate to the Bi-LSTM directory and execute the following code to reproduce the Bi-LSTM model:
-
-#### Step 1: `filter`: Code for data preprocessing according to the input requirements of the Bi-LSTM model.
+#### Step 1: 
 
 - Configuration Variables
 
@@ -40,7 +37,7 @@ Navigate to the Bi-LSTM directory and execute the following code to reproduce th
   ```python
   $ python filter.py
   ```
-#### Step 2: Training the Model
+#### Step 2: 
 
 - Configuration Variables
 
@@ -59,35 +56,33 @@ Navigate to the Bi-LSTM directory and execute the following code to reproduce th
 
 - Running the Code
 
-  Ensure that you have correctly set the variables mentioned above. Run the corresponding Python script to perform the training task, for example:
+  Ensure that you have correctly set the variables mentioned above. Run the corresponding Python script to perform the task, for example:
   ```python
   $ python whatwhytrain.py
   ```
 
-#### Step 3: Model Testing:
+### Construction of test cases:
+
+#### Construction of base samples
+
+![数据集采样结果](https://github.com/user-attachments/assets/1d25ea25-3347-452b-a844-b967c5dd0890)
+
+#### Construction of test cases
 
 - Configuration Variables
 
   Before running the code, please modify the following variables according to your requirements:
 
-  * `PATH`: Specify the path to the model checkpoint, for example, `./lightning_logs/version_1/checkpoints/epoch=29-step=330.ckpt`.
-  * `batch_size`: Specify the batch size, for example, `128`.
-  * `epochs`: Specify the number of testing epochs, for example, `30`.
-  * `dropout`: Specify the dropout rate, for example, `0.4`.
-  * `rnn_hidden`: Specify the size of the RNN hidden layer, for example, `768`.
-  * `rnn_layer`: Specify the number of RNN layers, for example, `1`.
-  * `class_num`: Specify the number of classes, for example, `4`.
-  * `lr`: Specify the learning rate, for example, `0.001`.
-  * `num_number`: Specify the number of batch files for testing data, for example, `5`.
-  * `test`: Specify the file path of the testing data, for example, `./data/archive/cstest/test{num}.csv`.
-  * `f`: Specify the output file path for prediction results, for example, `preds_csharp.json`.
+  * `file`: Specify the file path containing the generated text, for example, `csgptnoexample.jsonl`.
+  * `nlp_file_path`: Specify the file path containing the reference text for automated evaluation metrics, for example, `gptjavainnlp.jsonl`.
 
 - Running the Code
 
-  Ensure that you have correctly set the variables mentioned above. Run the corresponding Python script to perform the testing task, for example:
+  Ensure that you have correctly set the above variables. Run the corresponding Python script to perform the task of calculating automated evaluation metrics, for example:
   ```python
-  $ python whatwhytest.py
+  $ python metrics.py
   ```
+
 ### LLM Commit Message Generation:
 
 #### Configuration Variables

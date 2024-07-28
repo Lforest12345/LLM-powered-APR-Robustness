@@ -64,7 +64,8 @@ Navigate to the `` directory and execute the following code to implemnt MRs:
 ### Construction of test cases:
 
 #### Construction of base samples
-
+We obtain 60 base samples from each dataset, where 15 samples for each LLM, namely Defect4J<sub>base and QuixBugs<sub>base. Details of the base sample construction results
+are 
 ![数据集采样结果](https://github.com/user-attachments/assets/1d25ea25-3347-452b-a844-b967c5dd0890)
 
 #### Construction of test cases

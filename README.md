@@ -15,6 +15,51 @@ This repository includes the following code:
 
 ## Quick Start
 
+### Test the LLM's program repair performance.
+
+This step is designed to test the LLM's repair performance on the original datasets to build base samples. Navigate to the `LLM_test` directory. Before running the code, please perform different operations according to diffenrent datasets:
+
+#### Defects4J: 
+
+- Configuration Variables
+
+  The corresponding code file is `LLM_test_Defects4J.py`. Before running the code, please modify the following variables according to your requirements:
+
+  * `input_file`: Specify the file path of the input data of Defects4J, namely, `single_function_repair.json`, which located in the same directory.
+  * `keylist`:  A list containing multiple keys can be used. You can fill in a certain number of API keys according to your used models and actual needs.
+  * `llm_models`: A list of different LLM names. You can change the contents of this list to test multiple LLMS.
+  * `output_dir`: You can change the field name according to the actual situation, as the output directory of the test results, for example, `fixed_code_mistrallarge`.
+
+- Running the Code
+
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding Python script to perform the task, for example:
+  ```python
+  $ LLM_test_Defects4J.py`
+  ```
+
+#### QuixBugs: 
+
+- Configuration Variables
+
+  The corresponding code file is `LLM_test_QuixBugs.py`. Before running the code, please modify the following variables according to your requirements:
+
+  * `input_file`: Specify the file path of the input data of Defects4J, namely, `single_function_repair.json`, which located in the same directory.
+  * `keylist`:  A list containing multiple keys can be used. You can fill in a certain number of API keys according to your used models and actual needs.
+  * `llm_models`: A list of different LLM names. You can change the contents of this list to test multiple LLMS.
+  * `output_dir`: You can change the field name according to the actual situation, as the output directory of the test results, for example, `fixed_code_mistrallarge`.
+
+- Running the Code
+
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding Python script to perform the task, for example:
+  ```python
+  $ LLM_test_QuixBugs.py`
+  ```
+
+
 ### Implemention of Nine MRs Based on AST.
 Navigate to the `` directory and execute the following code to implemnt MRs:
 

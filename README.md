@@ -84,7 +84,7 @@ are as follows:
   $ python metrics.py
   ```
 
-### LLM Commit Message Generation:
+### LLM Code Patch Generation:
 
 #### Configuration Variables
 Before running the code, please modify the following variables according to the version and type of LLM:

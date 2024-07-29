@@ -165,14 +165,14 @@ Navigate to the `AST` directory and execute the following code to implemnt MRs:
   ```
 
 
-### Experimental results。
+### Experimental results.
 After you have all the test cases, first perform the patch correctness test as Step `Verify that the LLM generated the correct patch`.
 
 #### Experimental results of different RQs:
 
 - Configuration Variables
 
-  The corresponding code file is `analysis_Defects4J.py`, which located in the `Analysis` directory. Before running the code, please modify the following variables according to your requirements:
+  The corresponding code file is `analysis_Defects4J.py`, which located in the `Evaluation` directory. Before running the code, please modify the following variables according to your requirements:
 
   * `root_directory `: The path of the output directory of the validation results.
   * `result_file`: The path to store the txt file that counts the results of each RQ.

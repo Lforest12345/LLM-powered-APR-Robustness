@@ -137,6 +137,7 @@ Navigate to the `AST` directory and execute the following code to implemnt MRs:
   * `input_directory`: The directory of the results after pre-processing, for example, `fixed_code_mistrallarge_pre`.
   * `java_class_path`: The path to the Java library javaparser, for example, `javaparser-core-3.25.8.jar`, which located in the same directory.
   * `output_directory`: The path where the perturbed code patch is stored, for example, `perturbated_result_Defects4J`.
+  * `filenames` : The path to the directory of the successful repaired samples/unsuccessful repaired samples.
 
 - Running the Code
 

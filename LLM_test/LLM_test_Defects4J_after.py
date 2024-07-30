@@ -6,7 +6,7 @@ import re
 keylist = [
 'yourkeys'
 ]
-output_result = 'fixednew'
+output_result = 'fixed_after_LLM'
 projects_gemma = ['Closure-7', 'Gson-11', 'JacksonDatabind-1', 'JacksonDatabind-27', 'Closure-109',
                       'JacksonDatabind-99', 'Compress-45', 'Math-95', 'Cli-19', 'Jsoup-70', 'JacksonDatabind-67',
                       'Mockito-29', 'Lang-21', 'Lang-14', 'Math-89']

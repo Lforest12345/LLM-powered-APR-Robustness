@@ -125,6 +125,22 @@ After the above process, we obtain 60 base samples from each dataset, where 15 s
 are as follows:
 ![数据集采样结果](https://github.com/user-attachments/assets/1d25ea25-3347-452b-a844-b967c5dd0890)
 
+|     Dataset     |                         |              |   Defects4J   |           |            |              |    QuixBugs   |           |            |
+|:---------------:|:-----------------------:|:------------:|:-------------:|:---------:|------------|:------------:|:-------------:|-----------|------------|
+|                 |                         | CodeGemma-7B | Mistral Large | LLaMA3-8B | LLaMA3-70B | CodeGemma-7B | Mistral Large | LLaMA3-8B | LLaMA3-70B |
+|     Original    |                         |              |      395      |           |            |              |       40      |           |            |
+| Repaired Sample |                         |      29      |       32      |     16    |     42     |      16      |       27      |     20    |     24     |
+| Selected Sample |                         |      15      |       15      |     15    |     15     |      15      |       15      |     15    |     15     |
+| Repair Patterns | Code Moving             |       2      |       0       |     0     |      1     |       1      |       1       |     0     |      0     |
+|                 | Conditional Block       |       7      |       5       |     5     |      7     |       4      |       2       |     4     |      2     |
+|                 | Constant Change         |       1      |       1       |     1     |      1     |       1      |       0       |     0     |      0     |
+|                 | Copy/Paste              |       0      |       0       |     0     |      0     |       0      |       0       |     0     |      0     |
+|                 | Expression Fix          |       3      |       6       |     8     |      4     |      11      |       9       |     9     |     11     |
+|                 | Missing Null-Check      |       1      |       3       |     1     |      2     |       1      |       0       |     0     |      0     |
+|                 | Single Line             |       2      |       5       |     4     |     7      |       4      |       0       |     5     |      2     |
+|                 | Wraps-with/Unwraps-from |       3      |       4       |     4     |      4     |       0      |       0       |     0     |      0     |
+|                 | Wrong Reference         |       3      |       2       |     4     |      4     |       3      |       2       |     3     |      3     |
+
 ### Implemention of Nine MRs Based on AST.
 Navigate to the `AST` directory and execute the following code to implemnt MRs:
 

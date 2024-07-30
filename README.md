@@ -13,9 +13,9 @@ we choose four recent LLMs: Mistral Large, LLaMA3-70B, LLaMA3-8B, and CodeGemma-
 * stream=True
 * Prompt template:
 >The following Java code contains a bug. Your task is to fix the bug and provide the corrected code only. Do not include any other text in your response.
-Buggy code:
-{java_code}
-Fixed code:
+>Buggy code:
+>{java_code}
+>Fixed code:
 
 ## Code:
 This repository includes the following code:

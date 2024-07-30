@@ -196,12 +196,13 @@ This step is designed to test the LLM's repair performance on the perturbated sa
 
 - Configuration Variables
 
-  The corresponding code file is `LLM_test_QuixBugs.py`. Before running the code, please modify the following variables according to your requirements:
+  The corresponding code file is `LLM_test_QuixBugs_after.py`. Before running the code, please modify the following variables according to your requirements:
 
   * `keylist`:  A list containing multiple keys can be used. You can fill in a certain number of API keys according to your used models and actual needs.
-  * `buggy_dir`: The path to the directory where the Java buggy program is stored in the QuixBugs dataset, for example, `QuixBugs/java_programs`.
-  * `models`: A dict of different LLM names and thier model path. You can change the contents of this dict to test multiple LLMS.
-  * `fixed_dir`: You can change the field name according to the actual situation, as the output directory of the generated results, for example, `fixed_code_mistrallarge`.
+  * `projects_gemma`,`projects_8b`,`projects_70b`,`projects_mistral`: Project names in QuixBugs that the corresponding LLM is able to fix successfully.
+  * `model_project_mapping`: A dict that maps the LLM to its corresponding projects.
+  * `model_name_mapping`: A dict of different LLM names and thier model path. You can change the contents of this dict to test multiple LLMS.
+  * `base_dir`: The path where the perturbed code patch is stored.
 
 - Running the Code
 
@@ -209,10 +210,52 @@ This step is designed to test the LLM's repair performance on the perturbated sa
 
   Run the corresponding Python script to perform the task, for example:
   ```python
-  $ python LLM_test_QuixBugs.py
+  $ python LLM_test_QuixBugs_after.py
   ```
 
+### Verify that the LLM generated the correct patch after perturbation.
 
+ Navigate to the `LLM_validation` directory.
+
+#### Defects4J: 
+
+- Configuration Variables
+
+  The corresponding code file is `validate_Defects4J_after.py`. Before running the code, please modify the following variables according to your requirements:
+
+  * `main_folder`: This directory holds the code patches generated after perturbation by the LLM and ensures that all code patches have been pre-processed.
+  * `loc_folder`:  This directory corresponds to the path of `location` directory in the Defects4J raw dataset, for example, `Defects4j/location`.
+  * `input_file`: Specify the file path of the input data of Defects4J, namely, `single_function_repair.json`, which located in `LLM_test` directory.
+  * `output_result `: You can change the field name according to the actual situation, as the output directory of the validation results, for example, `validation_result`.
+  
+- Running the Code
+
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding Python script to perform the task, for example:
+  ```python
+  $ python validate_Defects4J_after.py
+  ```
+
+#### QuixBugs: 
+
+- Configuration Variables
+
+  The corresponding file is `validate_QuixBugs_after.sh`. Before running the script, please modify the following variables according to your requirements:
+
+  * `LLM_DIR`: The path to the output directory of the results after pre-processing. 
+  * `JAVA_PROGRAMS_DIR`: The path to the directory where the Java buggy program is stored in the QuixBugs dataset, for example, `QuixBugs/java_programs`.
+  * `RESULT_FILE`: The path to the file where the test results(successfully repaired) will be stored.
+  * `ERROR_FILE`: The path to the file where the test results(unsuccessfully repaired) will be stored.
+  
+- Running the Script
+
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding shell script to perform the task, for example:
+  ```shell
+  $ ./ validate_QuixBugs_after.sh
+  ```
 
 ## Contribution
 Contributions to this project through Pull Requests or Issues are welcome.

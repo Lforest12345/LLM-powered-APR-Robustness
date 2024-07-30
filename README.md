@@ -165,103 +165,54 @@ Navigate to the `AST` directory and execute the following code to implemnt MRs:
   $ python per_QuixBugs.py
   ```
 
+### LLM code patch generation after perturbation.
 
-### LLM Code Patch Generation:
+This step is designed to test the LLM's repair performance on the perturbated samples. Navigate to the `LLM_test` directory. Before running the code, please perform different operations according to diffenrent datasets:
 
-#### Configuration Variables
-Before running the code, please modify the following variables according to the version and type of LLM:
-- With Example (with_example):
-
-  * `lan`: Specify the path of the language data file, for example, `java.jsonl`.
-  * `output_filenames`: A dictionary specifying the paths of multiple output files, where each output file corresponds to different numbers of examples (1, 3, 5, 10). For example, `pyaddresult_gemini_1nov.jsonl`.
-  * `best_file`: Specify the path containing the file with the best examples.
-  * `key`: In Gemini's running code, fill in your Gemini API key.
-  * `key_list`: For GPT-3.5's running code, a list containing multiple keys can be used. You can fill in a certain number of GPT API keys according to your actual needs.
-
-- Without Example (without_example):
-
-  * `lan`: Specify the path of the language data file, for example, `java.jsonl`.
-  * `output_filename`: Specify the output file path, for example, `java_result_7B.jsonl`.
-  * `key`: In Gemini's running code, fill in your Gemini API key.
-  * `key_list`: For GPT-3.5's running code, you can fill in a certain number of GPT API keys according to your actual needs.
-
-#### Running the Code
-Ensure that you have correctly set the variables mentioned above. Run the corresponding Python script to perform the commit message generation task, for example:
-```python
-$ python GPT_with_example.py
-```
-
-### Calculate Automated Evaluation Metrics:
+#### Defects4J: 
 
 - Configuration Variables
 
-  Before running the code, please modify the following variables according to your requirements:
+  The corresponding code file is `LLM_test_Defects4J_after.py`. Before running the code, please modify the following variables according to your requirements:
 
-  * `file`: Specify the file path containing the generated text, for example, `csgptnoexample.jsonl`.
-  * `nlp_file_path`: Specify the file path containing the reference text for automated evaluation metrics, for example, `gptjavainnlp.jsonl`.
+  * `input_file`: Specify the file path of the input data of Defects4J, namely, `single_function_repair.json`, which located in the same directory.
+  * `keylist`:  A list containing multiple keys can be used. You can fill in a certain number of API keys according to your used models and actual needs.
+  * `projects_gemma`,`projects_8b`,`projects_70b`,`projects_mistral`: Project names in Defects4J that the corresponding LLM is able to fix successfully.
+  * `model_project_mapping`: A dict that maps the LLM to its corresponding projects.
+  * `model_name_mapping`: A dict of different LLM names and thier model path. You can change the contents of this dict to test multiple LLMS.
+  * `base_dir`: The path where the perturbed code patch is stored.
+  * `workers`； The hyperparameter of sample extraction.
 
 - Running the Code
 
-  Ensure that you have correctly set the above variables. Run the corresponding Python script to perform the task of calculating automated evaluation metrics, for example:
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding Python script to perform the task, for example:
   ```python
-  $ python metrics.py
+  $ python LLM_test_Defects4J_after.py
   ```
 
-### Retrieve the Best Examples:
-Enter the `tools` directory and choose the appropriate retrieval tool:
+#### QuixBugs: 
 
-#### Lexical Retrieval of Best Examples
 - Configuration Variables
 
-  Before running the code, please modify the following variables according to your requirements:
+  The corresponding code file is `LLM_test_QuixBugs.py`. Before running the code, please modify the following variables according to your requirements:
 
-  * `lan`: Specify the path of the language data file, for example, `java.jsonl`.
-  * `train`: Specify the path of the training data file, for example, `javatrain.jsonl`.
-  * `output_filename`: Specify the path of the output file, for example, `java_with_best.jsonl`.
+  * `keylist`:  A list containing multiple keys can be used. You can fill in a certain number of API keys according to your used models and actual needs.
+  * `buggy_dir`: The path to the directory where the Java buggy program is stored in the QuixBugs dataset, for example, `QuixBugs/java_programs`.
+  * `models`: A dict of different LLM names and thier model path. You can change the contents of this dict to test multiple LLMS.
+  * `fixed_dir`: You can change the field name according to the actual situation, as the output directory of the generated results, for example, `fixed_code_mistrallarge`.
 
 - Running the Code
 
-  Ensure that you have correctly set the above variables. Run the corresponding Python script to perform the lexical retrieval task, for example:
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding Python script to perform the task, for example:
   ```python
-  $ python lexical_retrieval.py
+  $ python LLM_test_QuixBugs.py
   ```
 
-#### Semantic Retrieval of Best Examples
-Semantic retrieval consists of two steps, vectorization, and finding the best examples:
 
-- Step 1: Vectorization:
-
-  - Configuration Variables
-  
-    Before running the code, please modify the following variables according to your requirements:
-
-    - `lan`: Specify the path of the language data file, for example, `py1.jsonl`.
-    - `output_file`: Specify the path of the output vector data file, for example, `vpy1no.jsonl`.
-
-  - Running the Code
-  
-  Ensure that you have correctly set the above variables. Run the corresponding Python script to perform the vectorization task, for example:
-  ```python
-  $ python semantic_retrieval_vectorization.py
-  ```
-
-- Step 2: Finding the Best Examples:
-
-  - Configuration Variables
-  
-    Before running the code, please modify the following variables according to your requirements:
-  
-    - `vlan`: Specify the path of the language vector data file, for example, `vpy1no.jsonl`.
-    - `vtrain`: Specify the path of the training vector data file, for example, `encoded_diffspy2.jsonl`.
-    - `output_file`: Specify the path of the output file containing the retrieved best matches, for example, `pybest_no_selectv.jsonl`.
-    - `input_file`: Specify the file path being retrieved, for example, `pytrain_no_selectv.jsonl`.
-
-  - Running the Code
-  
-  Ensure that you have correctly set the above variables. Run the corresponding Python script to perform the semantic retrieval task, for example:
-  ```python
-  $ python semantic_retrieval_find.py
-  ```
 
 ## Contribution
 Contributions to this project through Pull Requests or Issues are welcome.

@@ -5,6 +5,18 @@ Two datasets are employed as our test subjects:
 * Defects4J
 * QuixBugs
 
+## Models:
+we choose four recent LLMs: Mistral Large, LLaMA3-70B, LLaMA3-8B, and CodeGemma-7B. The parameter settings and prompt templates for all LLMs reviewed are fixed the same, as follows:
+* temperature=0
+* top_p=0.8
+* max_tokens=1024
+* stream=True
+* Prompt template:
+>The following Java code contains a bug. Your task is to fix the bug and provide the corrected code only. Do not include any other text in your response.
+Buggy code:
+{java_code}
+Fixed code:
+
 ## Code:
 This repository includes the following code:
 

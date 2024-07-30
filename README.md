@@ -165,43 +165,30 @@ Navigate to the `AST` directory and execute the following code to implemnt MRs:
   ```
 
 
-### Experimental results.
-After you have all the test cases, first perform the patch correctness test as Step `Verify that the LLM generated the correct patch`.
+### LLM Code Patch Generation:
 
-#### Experimental results of different RQs:
+#### Configuration Variables
+Before running the code, please modify the following variables according to the version and type of LLM:
+- With Example (with_example):
 
-- Configuration Variables
+  * `lan`: Specify the path of the language data file, for example, `java.jsonl`.
+  * `output_filenames`: A dictionary specifying the paths of multiple output files, where each output file corresponds to different numbers of examples (1, 3, 5, 10). For example, `pyaddresult_gemini_1nov.jsonl`.
+  * `best_file`: Specify the path containing the file with the best examples.
+  * `key`: In Gemini's running code, fill in your Gemini API key.
+  * `key_list`: For GPT-3.5's running code, a list containing multiple keys can be used. You can fill in a certain number of GPT API keys according to your actual needs.
 
-  The corresponding code file is `analysis_Defects4J.py`, which located in the `Evaluation` directory. Before running the code, please modify the following variables according to your requirements:
+- Without Example (without_example):
 
-  * `root_directory `: The path of the output directory of the validation results.
-  * `result_file`: The path to store the txt file that counts the results of each RQ.
+  * `lan`: Specify the path of the language data file, for example, `java.jsonl`.
+  * `output_filename`: Specify the output file path, for example, `java_result_7B.jsonl`.
+  * `key`: In Gemini's running code, fill in your Gemini API key.
+  * `key_list`: For GPT-3.5's running code, you can fill in a certain number of GPT API keys according to your actual needs.
 
-- Running the Code
-
-  Ensure that you have correctly set the variables mentioned above.
-
-  Run the corresponding Python script to perform the task, for example:
-  ```python
-  $ python analysis_Defects4J.py
-  ```
-  
-#### QuixBugs: 
-
-  The corresponding code file is `analysis_QuixBugs.py`. Before running the code, please modify the following variables according to your requirements:
-
-  * `files_to_read`: The path of the output directory of the validation results.
-  * `result_file`: The path to store the txt file that counts the results of each RQ.
-
-- Running the Code
-
-  Ensure that you have correctly set the variables mentioned above.
-
-  Run the corresponding Python script to perform the task, for example:
-  ```python
-  $ python analysis_QuixBugs.py
-  ```
-
+#### Running the Code
+Ensure that you have correctly set the variables mentioned above. Run the corresponding Python script to perform the commit message generation task, for example:
+```python
+$ python GPT_with_example.py
+```
 
 ### Calculate Automated Evaluation Metrics:
 
@@ -280,3 +267,4 @@ Contributions to this project through Pull Requests or Issues are welcome.
 
 ## License
 This project is licensed under the `MIT` License.
+# LLM-powered-APR-Robustness

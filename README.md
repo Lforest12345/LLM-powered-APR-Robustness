@@ -257,6 +257,105 @@ This step is designed to test the LLM's repair performance on the perturbated sa
   $ ./ validate_QuixBugs_after.sh
   ```
 
+### Experimental results
+
+#### Experimental results for different RQs:
+
+##### Defects4J
+
+- Configuration Variables
+
+  The corresponding file is `analysis_Defects4J.py`. Before running the script, please modify the following variables according to your requirements:
+
+  * `root_directory`: The path of the results of Defects4J obtained from the above process. 
+  * `result_file`: The results of different RQs of Defects4J.
+  
+- Running the Script
+
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding script to perform the task, for example:
+  ```shell
+  $ python analysis_Defects4J.py
+  ```
+
+##### QuixBugs
+
+- Configuration Variables
+
+  The corresponding file is `analysis_QuixBugs.py`. Before running the script, please modify the following variables according to your requirements:
+
+  * `files_to_read`: List of files to read, which are obtained from the above process. 
+  * `result_file`: The results of different RQs of QuixBugs.
+  
+- Running the Script
+
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding script to perform the task, for example:
+  ```shell
+  $ python analysis_QuixBugs.py
+  ```
+
+#### Edit the distance calculation.
+
+Depending on the specific task, you can modify the path contents in the following Python files as needed:
+
+* `disatnce_Defects4J.py`: Calculate the edit distance for samples from Defects4J.
+* `disatnce_QuixBugs.py`: Calculate the edit distance for samples from QuixBugs.
+* `disatnce_average.py`: Calculate the average edit distance for both datasets.
+* `distance_zero`: Calculate the ratio of edit distance to zero.
+
+### Improvement
+
+Train a CodeT5-based code editing model aiming at improving buggy code readability.
+
+#### Step1. Obtain training data.
+
+- Configuration Variables
+
+  Navigate to the `codet5` directory. The corresponding file is `generate_train.py`. Before running the script, please modify the following variables according to your requirements:
+
+  * `disturb_fail_dir`: The path to the directory where the test results(unsuccessfully repaired) will be stored.
+  * `repair_json_path`: Specify the file path of the input data of Defects4J, namely, `single_function_repair.json`, which located in `LLM_test` directory.
+  * `output_json_path`: The path to the output file.
+  
+- Running the Script
+
+  Ensure that you have correctly set the variables mentioned above.
+
+  Run the corresponding script to perform the task, for example:
+  ```shell
+  $ python generate_train.py
+  ```
+
+#### Step2. Model training.
+
+- Configuration Variables
+
+  The corresponding file is `train.py`. You can adjust the contents of this file according to your devices and resources.
+  
+- Running the Script
+
+  Run the corresponding script to perform the task, for example:
+  ```shell
+  $ python train.py
+  ```
+
+#### Step3. Model testing.
+
+- Configuration Variables
+
+  The corresponding file is `test.py`. You can adjust the contents of this file according to your actual demands.
+  
+- Running the Script
+
+  Run the corresponding script to perform the task, for example:
+  ```shell
+  $ python test.py
+  ```
+
+
 ## Contribution
 Contributions to this project through Pull Requests or Issues are welcome.
 
